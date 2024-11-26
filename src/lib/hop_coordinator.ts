@@ -1,6 +1,6 @@
 // src/lib/hop_coordinator.ts
 
-import { Logger } from '../utils/logger';
+import Logger from '../utils/logger';
 import { EventEmitter } from 'events';
 import { QueryDecomposer } from './query_decomposer';
 

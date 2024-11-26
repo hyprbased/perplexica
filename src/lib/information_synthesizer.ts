@@ -1,6 +1,6 @@
 // src/lib/information_synthesizer.ts
 
-import { Logger } from '../utils/logger';
+import Logger from '../utils/logger';
 import { EventEmitter } from 'events';
 
 interface HopResult {

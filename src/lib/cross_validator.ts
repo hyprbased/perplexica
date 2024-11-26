@@ -1,6 +1,6 @@
 // src/lib/cross_validator.ts
 
-import { Logger } from '../utils/logger';
+import Logger from '../utils/logger';
 import { EventEmitter } from 'events';
 
 interface ValidationRule {
