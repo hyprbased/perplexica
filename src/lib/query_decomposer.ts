@@ -1,6 +1,6 @@
 // src/lib/query_decomposer.ts
 
-import { Logger } from '../utils/logger';
+import Logger from '../utils/logger';
 import { Graph } from 'graphlib';
 
 interface SubQuery {

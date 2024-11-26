@@ -1,6 +1,6 @@
 // src/lib/state_manager.ts
 
-import { Logger } from '../utils/logger';
+import Logger from '../utils/logger';
 import { EventEmitter } from 'events';
 import * as fs from 'fs/promises';
 import * as path from 'path';
