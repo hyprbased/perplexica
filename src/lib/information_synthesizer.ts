@@ -45,7 +45,7 @@ interface SynthesisResult {
 }
 
 export class InformationSynthesizer extends EventEmitter {
-    private logger: Logger;
+    private logger: typeof Logger;
     private citationIndex: Map<string, Citation>;
     private qualityThreshold: number;
     private confidenceWeights: Map<string, number>;

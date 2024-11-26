@@ -32,7 +32,7 @@ interface ReasoningStep {
 }
 
 export class HopCoordinator extends EventEmitter {
-    private logger: Logger;
+    private logger: typeof Logger;
     private agents: Map<string, Agent>;
     private activeQueries: Map<string, Query>;
     private reasoningSteps: Map<string, ReasoningStep>;

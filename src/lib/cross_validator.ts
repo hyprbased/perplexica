@@ -33,7 +33,7 @@ interface ConsistencyCheck {
 }
 
 export class CrossValidator extends EventEmitter {
-    private logger: Logger;
+    private logger: typeof Logger;
     private validationRules: Map<string, ValidationRule>;
     private consistencyChecks: Map<string, ConsistencyCheck>;
     private conflictResolutionStrategies: Map<string, (issues: ValidationIssue[]) => Promise<any>>;
