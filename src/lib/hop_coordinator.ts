@@ -40,7 +40,7 @@ export class HopCoordinator extends EventEmitter {
 
     constructor(ollamaEndpoint: string) {
         super();
-        this.logger = new Logger();
+        this.logger = Logger;
         this.agents = new Map();
         this.activeQueries = new Map();
         this.reasoningSteps = new Map();

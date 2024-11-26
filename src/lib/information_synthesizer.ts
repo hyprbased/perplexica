@@ -52,7 +52,7 @@ export class InformationSynthesizer extends EventEmitter {
 
     constructor(qualityThreshold: number = 0.7) {
         super();
-        this.logger = new Logger();
+        this.logger = Logger;
         this.citationIndex = new Map();
         this.qualityThreshold = qualityThreshold;
         this.confidenceWeights = new Map();

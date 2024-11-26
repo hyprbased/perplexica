@@ -40,7 +40,7 @@ export class CrossValidator extends EventEmitter {
 
     constructor() {
         super();
-        this.logger = new Logger();
+        this.logger = Logger;
         this.validationRules = new Map();
         this.consistencyChecks = new Map();
         this.conflictResolutionStrategies = new Map();
