@@ -17,9 +17,15 @@ import type { BaseChatModel } from '@langchain/core/language_models/chat_models'
 import type { Embeddings } from '@langchain/core/embeddings';
 import formatChatHistoryAsString from '../utils/formatHistory';
 import eventEmitter from 'events';
-import computeSimilarity from '../utils/computeSimilarity';
+import computeSimilarity, { SimilarityMetrics } from '../utils/computeSimilarity';
 import logger from '../utils/logger';
 import { IterableReadableStream } from '@langchain/core/utils/stream';
+
+// Define interface for similarity results
+interface SimilarityResult {
+  index: number;
+  similarity: SimilarityMetrics;
+}
 
 const basicRedditSearchRetrieverPrompt = `
 You will be given a conversation below and a follow up question. You need to rephrase the follow-up question if needed so it is a standalone question that can be used by the LLM to search the web for information.
@@ -174,9 +180,8 @@ const createBasicRedditSearchAnsweringChain = (
         embeddings.embedQuery(query),
       ]);
 
-      const similarity = docEmbeddings.map((docEmbedding, i) => {
+      const similarity: SimilarityResult[] = docEmbeddings.map((docEmbedding, i) => {
         const sim = computeSimilarity(queryEmbedding, docEmbedding);
-
         return {
           index: i,
           similarity: sim,
@@ -184,13 +189,16 @@ const createBasicRedditSearchAnsweringChain = (
       });
 
       const sortedDocs = similarity
-        .filter((sim) => sim.similarity > 0.3)
-        .sort((a, b) => b.similarity - a.similarity)
+        .filter((sim) => sim.similarity.value > 0.3)
+        .sort((a, b) => b.similarity.value - a.similarity.value)
         .slice(0, 15)
         .map((sim) => docsWithContent[sim.index]);
 
       return sortedDocs;
     }
+    
+    // Default return for 'quality' mode or undefined mode
+    return docsWithContent;
   };
 
   return RunnableSequence.from([
