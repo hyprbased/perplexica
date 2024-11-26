@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "graphlib": "^2.1.8",
-    "@types/graphlib": "^2.1.8"
+    "@types/graphlib": "^2.1.8",
     "@iarna/toml": "^2.2.5",
     "@langchain/anthropic": "^0.2.3",
     "@langchain/community": "^0.2.16",
